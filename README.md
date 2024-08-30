@@ -10,7 +10,10 @@ dotnet watch run
 
 Microsoft.EntityFrameworkCore.SqlServer
 Microsoft.EntityFrameworkCore.Design
+
 Microsoft.EntityFrameworkCore.Tools
+Microsoft.AspNetCore.Mvc.Cors
+Microsoft.EntityFrameworkCore
 
 //Tạo Migrations
 
