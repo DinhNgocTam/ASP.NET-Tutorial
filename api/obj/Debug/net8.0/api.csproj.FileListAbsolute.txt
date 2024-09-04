@@ -147,3 +147,4 @@ E:\Workspace\ASP.NET\API\api\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.Enti
 E:\Workspace\ASP.NET\API\api\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 E:\Workspace\ASP.NET\API\api\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
 E:\Workspace\ASP.NET\API\api\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
+E:\Workspace\ASP.NET\API\api\obj\Debug\net8.0\api.sourcelink.json

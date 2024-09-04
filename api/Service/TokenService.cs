@@ -24,12 +24,17 @@ namespace api.Service
             );
         }
 
-        public string CreateToken(AppUser appUser)
+        public string CreateToken(AppUser appUser, IList<string> role)
         {
             var claims = new List<Claim>()
             {
                 new Claim(JwtRegisteredClaimNames.Email, appUser.Email),
                 new Claim(JwtRegisteredClaimNames.GivenName, appUser.UserName),
+                new Claim(
+                    ClaimTypes.Role,
+                    string.Join(" ", role) // Cộng hai claim cho role
+                ) // Thêm claim cho role
+                ,
             };
 
             var creds = new SigningCredentials(_key, SecurityAlgorithms.HmacSha512Signature);

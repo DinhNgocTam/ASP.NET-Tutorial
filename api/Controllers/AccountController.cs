@@ -42,7 +42,8 @@ namespace api.Controllers
 
             if (user == null)
                 return Unauthorized("Invalid username");
-
+            //get account's role for token
+            var role = await _userManager.GetRolesAsync(user);
             var result = await _signInManager.CheckPasswordSignInAsync(
                 user,
                 loginRequestDto.Password,
@@ -55,7 +56,7 @@ namespace api.Controllers
                 {
                     UserName = user.UserName,
                     Email = user.Email,
-                    Token = _tokenService.CreateToken(user),
+                    Token = _tokenService.CreateToken(user, role),
                 }
             );
         }
@@ -76,6 +77,9 @@ namespace api.Controllers
 
                 if (createdUser.Succeeded)
                 {
+                    //create account's role for token
+                    IList<string> roles = new List<string>() { "User" };
+
                     var roleResult = await _userManager.AddToRoleAsync(appUser, "User");
                     if (roleResult.Succeeded)
                     {
@@ -84,7 +88,7 @@ namespace api.Controllers
                             {
                                 UserName = appUser.UserName,
                                 Email = appUser.Email,
-                                Token = _tokenService.CreateToken(appUser),
+                                Token = _tokenService.CreateToken(appUser, roles),
                             }
                         );
                     }
